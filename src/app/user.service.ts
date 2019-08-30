@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import 'rxjs/add/operator/map';
-import { Cep } from './cep';
+import { Cep } from './cep'
+
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,6 @@ export class UserService {
   buscar(cep:string){
     return this.http
       .get(`https://viacep.com.br/ws/${cep}/json/`)
-      .map(data => this.resultado = this.converterRespostaParaCep(data));
+      //.map(data => this.resultado = this.converterRespostaParaCep(data));
   }
 }
