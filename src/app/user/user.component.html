@@ -1,0 +1,21 @@
+<div class="example-container">
+    <mat-form-field>
+        <input matInput placeholder="CEP">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Endereço">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="CPF">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Telefone">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Email" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    
+    
+
+</div>
