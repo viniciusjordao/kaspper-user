@@ -1,21 +1,30 @@
 <div class="example-container">
     <mat-form-field>
-        <input matInput placeholder="CEP">
+        <input #cepBox id="cep-box" (input)="searchCep(cepBox.value)"  matInput placeholder="Cep">
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Endereço">
+        <input [(ngModel)]="user.logradouro" matInput placeholder="Rua">
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="CPF">
+        <input [(ngModel)]="user.numero" matInput placeholder="Numero">
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Telefone">
+        <input [(ngModel)]="user.bairro" matInput placeholder="Bairro">
     </mat-form-field>
     <mat-form-field>
-        <input matInput placeholder="Email" [formControl]="email" required>
+        <input [(ngModel)]="user.localidade" matInput placeholder="Cidade">
+    </mat-form-field>
+    <mat-form-field>
+        <input [(ngModel)]="user.uf" matInput placeholder="Estado">
+    </mat-form-field>
+    <mat-form-field>
+        <input [(ngModel)]="user.cpf" matInput placeholder="CPF">
+    </mat-form-field>
+    <mat-form-field>
+        <input [(ngModel)]="user.telefone" matInput placeholder="Telefone">
+    </mat-form-field>
+    <mat-form-field>
+        <input [(ngModel)]="user.email" matInput placeholder="Email" [formControl]="email" required>
         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
     </mat-form-field>
-    
-    
-
-</div>
+    <button mat-button color="primary">Primary</button>

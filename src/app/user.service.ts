@@ -1,19 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Cep } from './cep'
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { User } from './user'
 
-import { map } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  resultado:Cep;
-  constructor(private http:HttpClient) { }
 
-  buscar(cep:string){
-    return this.http
-      .get(`https://viacep.com.br/ws/${cep}/json/`)
-      //.map(data => this.resultado = this.converterRespostaParaCep(data));
+  constructor(private http:HttpClient) {}
+
+  getUser(cepNumber:string): Observable<User> {
+    return this.http.get<User>(`https://viacep.com.br/ws/${cepNumber}/json/`)
+      .pipe(
+        tap(_ => console.log('deu certo'))
+      )
   }
+
+
 }

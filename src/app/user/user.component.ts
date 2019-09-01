@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 
+import { User } from '../user';
+
+import { UserService } from '../user.service';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -8,18 +12,35 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class UserComponent implements OnInit {
 
-  //cep  = new FormControl(cep);
+  @Input() user: User;
+
+  constructor(private userService: UserService) { }
+
+  
+
+  ngOnInit(): void  {
+    this.getUser(); 
+  }
+
+  searchCep(term: string): void {
+   
+    if(term){
+      console.log(term);
+      this.userService.getUser(term)
+      .subscribe(user => this.user = user);
+    }
+  }
+
+  getUser(): void {
+
+
+  }
+  
   email = new FormControl('', [Validators.required, Validators.email]);
 
   getErrorMessage() {
     return this.email.hasError('required') ? 'Campo obrigatório' :
         this.email.hasError('email') ? 'Email inválido' :
             '';
-  }
-
-  constructor() { }
-
-  ngOnInit() {
-    
   }
 }
