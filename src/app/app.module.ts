@@ -30,7 +30,6 @@ import { InfoComponent } from './info/info.component';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    HttpClientModule,
 
 // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
 // and returns simulated server responses.

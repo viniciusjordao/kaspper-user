@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+//import {MatDialog} from '@angular/material'
 
 import { User } from '../user';
 
@@ -16,9 +17,7 @@ export class UserComponent implements OnInit {
 
   constructor(private userService: UserService) { }
 
-  
-
-  ngOnInit(): void  {
+    ngOnInit(): void  {
     this.getUser(); 
   }
 
