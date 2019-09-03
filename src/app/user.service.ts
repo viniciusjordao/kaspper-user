@@ -16,12 +16,29 @@ export class UserService {
 
   constructor(private http:HttpClient) {}
 
-  getUser(cepNumber:string): Observable<User> {
-    return this.http.get<User>(`https://viacep.com.br/ws/${cepNumber}/json/`)
+    saveUser(user: User): Observable<User> {
+      
+    return this.http.put(this.userUrl, user, httpOptions).pipe(
+      tap((user: User) => console.log(`added ${user.bairro}`)),
+    );
+  }
+
+    getUser(): Observable<User[]> {
+    return this.http.get<User[]>(this.userUrl)
       .pipe(
         tap(_ => console.log('deu certo'))
       )
+
   }
+
+  private userUrl = 'api/user';  // URL to web api
+
+  // getUser(cepNumber:string): Observable<User> {
+  //   return this.http.get<User>(`https://viacep.com.br/ws/${cepNumber}/json/`)
+  //     .pipe(
+  //       tap(_ => console.log('deu certo'))
+  //     )
+  // }
 
 
 }

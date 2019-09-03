@@ -15,7 +15,14 @@ export class InfoComponent implements OnInit {
 
   constructor(private userService: UserService) { }
 
+  getInfo(): void{
+    this.userService.getUser()
+    .subscribe(user => this.user = user);
+    console.log(this.user);
+  }
+
   ngOnInit() {
+    this.getInfo();
   }
 
 }
