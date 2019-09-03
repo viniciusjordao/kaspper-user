@@ -17,7 +17,7 @@ export class InfoComponent implements OnInit {
 
   getInfo(): void{
     this.userService.getUser()
-    .subscribe(user => this.user = user);
+    //.subscribe(user => this.user = user);
     console.log(this.user);
   }
 
