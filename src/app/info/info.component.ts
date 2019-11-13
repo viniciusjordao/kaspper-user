@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { User } from '../user'
+import { USER } from '../mock-user';
 
 import { UserService } from '../user.service';
 
@@ -11,18 +12,24 @@ import { UserService } from '../user.service';
 })
 export class InfoComponent implements OnInit {
 
-  @Input() user: User;
+  //@Input() user: User;
+  user : User;
+
+  private bosta = 'coco mole';
 
   constructor(private userService: UserService) { }
 
-  getInfo(): void{
+  ngOnInit():void {
+    this.getUser();
+  }
+
+
+  getUser(): void {
     this.userService.getUser()
-    //.subscribe(user => this.user = user);
-    console.log(this.user);
+      .subscribe(user => this.user = user);
+    //this.user = this.userService.getUser();
+        
   }
 
-  ngOnInit() {
-    this.getInfo();
-  }
-
+ 
 }

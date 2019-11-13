@@ -26,6 +26,8 @@
     </mat-toolbar-row>
 </mat-toolbar>
 <br>
+bairro: {{user.bairro}}
+numero: {{user.numero}}
 <div class="example-container">
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <mat-form-field>
@@ -61,4 +63,7 @@
         </mat-form-field>
         <button type="submit" >Salvar dados</button>
     </form>>
+    <a routerLink="/info">
+        {{user.cpf}}
+      </a>
 </div>

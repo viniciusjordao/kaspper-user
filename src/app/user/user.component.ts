@@ -14,7 +14,8 @@ import { UserService } from '../user.service';
 })
 export class UserComponent implements OnInit {
 
-  @Input() user: User;
+  //@Input() user: User;
+  user: User; 
 
   userForm = new FormGroup({
     bairro: new FormControl(''),
@@ -32,9 +33,14 @@ export class UserComponent implements OnInit {
   constructor(private userService: UserService) { }
 
     ngOnInit(): void  {
-    //this.getUser(); 
+    this.getUser(); 
   }
-
+  getUser(): void {
+    this.userService.getUser()
+      .subscribe(user => this.user = user);
+    //this.user = this.userService.getUser();
+        
+  }
       
 
   // searchCep(term: string): void {
