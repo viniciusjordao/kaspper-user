@@ -9,7 +9,8 @@ import { User } from './user';
 })
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
-    const user =  {
+    const users = [ {
+        id : 1,
         bairro: 'pead',
         cep: '',
         complemento: '',
@@ -23,15 +24,22 @@ export class InMemoryDataService implements InMemoryDbService {
         telefone: '',
         email: '',
     }
+  ];
 
     
-    console.log(user);
-    return {user};
+    console.log(users[0]);
+    return {users};
   }
 
-  postUser(user: User[]){
-    //console.log(user);
-    return user;
-  }
+
+  // genId(user : User): number {
+  //   user => user.id
+  //   return 1
+  // }
+
+  // postUser(user: User[]){
+  //   //console.log(user);
+  //   return user;
+  // }
 
 }

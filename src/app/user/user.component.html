@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-    <span>Kaspper</span>
+    <span>Laurent</span>
         <span class="example-fill-remaining-space"></span>
         <span class="align-center"></span>
         <span class="example-spacer"></span>
@@ -9,14 +9,20 @@
         <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
         </button>
-        <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-            <!-- <mat-icon>dialpad</mat-icon>
-            <span>Redial</span> -->
+        <mat-menu #menu="matMenu" >
+               
+        <button mat-menu-item routerLink="/info" *ngIf="users">
+                <mat-icon>account_box</mat-icon>
+                <span>Dados Usuário</span> 
         </button>
+        <button mat-menu-item routerLink="/user" *ngIf="users">
+            <mat-icon>edit</mat-icon>
+            <span>Alterar dados</span> 
+    </button>
+
         <button mat-menu-item disabled>
-            <!-- <mat-icon>voicemail</mat-icon>
-            <span>Check voicemail</span> -->
+           
+
         </button>
         <button mat-menu-item>
             <!-- <mat-icon>notifications_off</mat-icon>
@@ -26,8 +32,6 @@
     </mat-toolbar-row>
 </mat-toolbar>
 <br>
-bairro: {{user.bairro}}
-numero: {{user.numero}}
 <div class="example-container">
     <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
         <mat-form-field>
@@ -63,7 +67,7 @@ numero: {{user.numero}}
         </mat-form-field>
         <button type="submit" >Salvar dados</button>
     </form>>
-    <a routerLink="/info">
+    <a routerLink="/info" *ngIf="user">
         {{user.cpf}}
       </a>
 </div>

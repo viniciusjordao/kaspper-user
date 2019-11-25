@@ -1,4 +1,5 @@
 export class User {
+    id:number;
     bairro: string;
     cep:string;
     complemento:string;

@@ -1,7 +1,63 @@
-<div *ngIf="user">
-<p>{{bosta}}</p>
-<p>{{user.bairro}}</p>
-<h3>{{user.logradouro}}</h3>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+    <span>Laurent</span>
+        <span class="example-fill-remaining-space"></span>
+        <span class="align-center"></span>
+        <span class="example-spacer"></span>
+        <!-- <button mat-button>Sobre</button>
+        <button mat-button>Contact</button> -->
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" >
+               
+        <button mat-menu-item routerLink="/info" *ngIf="users">
+                <mat-icon>account_box</mat-icon>
+                <span>Dados Usuário</span> 
+        </button>
+        <button mat-menu-item routerLink="/user" *ngIf="users">
+            <mat-icon>edit</mat-icon>
+            <span>Alterar dados</span> 
+    </button>
+
+  
+
+        <button mat-menu-item disabled>
+           
+
+        </button>
+        <button mat-menu-item>
+            <!-- <mat-icon>notifications_off</mat-icon>
+            <span>Disable alerts</span> -->
+        </button>
+        </mat-menu>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div *ngIf="users">
+
+  <ul>
+    <li>
+        bairro: {{users[0].bairro}}
+    </li>
+    <li>
+        cep:  {{users[0].cep}}
+    </li>
+    <li>
+        numero:  {{users[0].bairro}},
+    </li>
+    <li>
+        complemento:  {{users[0].complemento}}
+    </li>
+    <li>
+        numero: {{users[0].numero}}
+    </li>
+    <li>
+        gia: {{users[0].gia}}
+    </li>
+    <li>
+        localidade: {{users[0].localidade}}
+    </li>
+  </ul>
 
 <a routerLink="/user">
     Usuário

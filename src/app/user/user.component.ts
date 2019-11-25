@@ -14,10 +14,12 @@ import { UserService } from '../user.service';
 })
 export class UserComponent implements OnInit {
 
-  //@Input() user: User;
-  user: User; 
+  @Input() user: User;
+
+  users: User[]; 
 
   userForm = new FormGroup({
+    id:new FormControl(1),
     bairro: new FormControl(''),
     cep: new FormControl(''),
     complemento: new FormControl(''),
@@ -36,8 +38,9 @@ export class UserComponent implements OnInit {
     this.getUser(); 
   }
   getUser(): void {
+    
     this.userService.getUser()
-      .subscribe(user => this.user = user);
+      .subscribe(users => this.users = users);
     //this.user = this.userService.getUser();
         
   }
@@ -60,11 +63,14 @@ export class UserComponent implements OnInit {
             '';
   }
 
-  onSubmit() {
+  onSubmit() : void {
     // TODO: Use EventEmitter with form value
     //console.warn(this.userForm.value);
     this.user = this.userForm.value;
     //console.warn(this.user);
     this.userService.saveUser(this.user)
+    .subscribe();
   }
+
+
 }

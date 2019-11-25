@@ -13,7 +13,7 @@ import { UserService } from '../user.service';
 export class InfoComponent implements OnInit {
 
   //@Input() user: User;
-  user : User;
+  users : User[];
 
   private bosta = 'coco mole';
 
@@ -26,7 +26,7 @@ export class InfoComponent implements OnInit {
 
   getUser(): void {
     this.userService.getUser()
-      .subscribe(user => this.user = user);
+      .subscribe(users => this.users = users);
     //this.user = this.userService.getUser();
         
   }

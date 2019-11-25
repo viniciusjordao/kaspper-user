@@ -1,6 +1,7 @@
 import { User } from './user';
 
 export const USER: User =     {
+      id:1,
       bairro: 'iygiluhioh',
       cep: '',
       complemento: '',

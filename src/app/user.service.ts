@@ -26,15 +26,21 @@ export class UserService {
 
   // }
 
-  getUser(): Observable<User> {
-    return this.http.get<User>(this.userUrl)
+  getUser(): Observable<User[]> {
+    return this.http.get<User[]>(this.usersUrl)
+    
   }
 
-  saveUser(user: User): Observable<User> {
-      console.log(user);
-      return this.http.post<User>(this.userUrl, user, httpOptions).pipe(
-      // tap((teste: User) => this.log(`added ${teste.bairro}`)),
-      // catchError(this.handleError<any>('updateUser'))
+  saveUser(user: User): Observable<any> {
+    console.log(user);
+      // return this.http.post<User>(this.userUrl, user, httpOptions).pipe(
+      // // tap((teste: User) => this.log(`added ${teste.bairro}`)),
+      // // catchError(this.handleError<any>('updateUser'))
+   // );
+
+    return this.http.put(this.usersUrl, user, httpOptions).pipe(
+      //tap(_ => this.log(`updated hero id=${hero.id}`)),
+      //catchError(this.handleError<any>('updateHero'))
     );
   }
 
@@ -42,7 +48,7 @@ export class UserService {
     //this.messageService.add(`HeroService: ${message}`);
   }
 
-  private userUrl = 'api/user';  // URL to web api
+  private usersUrl = 'api/users';  // URL to web api
 
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
